@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>通过元素来触发键盘事件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            color: #fff;
+            text-align: center;
+            line-height: 200px;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            background: #666666;
+            cursor: pointer;
+        }
+        div.active{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="aaa">点 空格/我 变红</div>
+<div id="bb">点 a/我 变回来</div>
+
+<script src="create-evt.js"></script>
+<script>
+    window.addEventListener("keydown", function (event) {
+        if (event.defaultPrevented) {
+            return;
+        }
+        var handled = false;
+        if (event.key !== undefined) {
+            // Handle the event with KeyboardEvent.key and set handled true.
+            if(event.key === " "){
+                space.classList.add('active')
+            }else if(event.key === 'a'){
+                space.classList.remove('active')
+            }
+        } else if (event.keyIdentifier !== undefined) {
+            // Handle the event with KeyboardEvent.keyIdentifier and set handled true.
+            console.log( 'event.keyIdentifier',event.keyIdentifier);
+        } else if (event.keyCode !== undefined || event.which !== undefined) {
+            // Handle the event with KeyboardEvent.keyCode and set handled true.
+            if(event.keyCode === 32){
+                space.classList.add('active')
+            }else if(event.keyCode === 65){
+                space.classList.remove('active')
+            }
+        }
+        if (handled) {
+            // Suppress "double action" if event handled
+            event.preventDefault();
+        }
+    }, true);
+    const space = document.querySelector('#aaa');
+    const back = document.querySelector('#bb');
+
+    // space.onclick = (e) => {
+    //     createKeyEvent(space,'keydown',32," ")
+    // };
+    // back.onclick = (e) => {
+    //     createKeyEvent(space,'keydown',65,'a')
+    // };
+
+    //如果你需要添加事件的元素比较多。可以使用index.js里面的 batchAddEvent方法 批量绑定
+    let aele = [
+        {
+            obj: space,
+            keyCode: 32,
+            key: " "
+        },
+        {
+            obj: back,
+            keyCode: 65,
+            key: "a"
+        }
+    ];
+    batchAddEvent(aele,'keydown')
+
+</script>
+
+</body>
+</html>

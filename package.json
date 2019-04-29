@@ -1,0 +1,24 @@
+{
+  "name": "eletokeyboard",
+  "version": "1.0.2",
+  "description": "这是一个将元素点击事件传递键盘的插件，通过它你可以模拟键盘事件，创建一个手机端也能玩的游戏手柄，创建它是因为让用户可以在手机端 点击元素触发已经添加的键盘事件。",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mz1326/eletokeyboard.git"
+  },
+  "keywords": [
+    "keyboard",
+    "event",
+    "UIEvents"
+  ],
+  "author": "mz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mz1326/eletokeyboard/issues"
+  },
+  "homepage": "https://github.com/Mz1326/eletokeyboard#readme"
+}
