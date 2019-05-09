@@ -4,6 +4,7 @@
 
 /*
  * 给元素添加事件（用来触发键盘事件）
+ * el模拟事件的触发元素，evtType事件类型，keycode对应的键盘事件的键值,key对应事件所触发的键名,
  */
 const createKeyEvent = (el, evtType, keyCode ,key) => {
     var doc = el.ownerDocument,
